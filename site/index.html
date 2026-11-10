@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9f2">
+  <meta name="description" content="A little celebration for Valerie and her last presentation!">
+  <title>You did it, Valerie! ✨</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #302541;
+      --muted: #766c7e;
+      --berry: #bc4d77;
+      --plum: #6652a4;
+      --paper: #fff9f2;
+      --card: rgba(255, 255, 255, .79);
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; min-height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100svh;
+      overflow-x: hidden;
+      color: var(--ink);
+      font-family: ui-rounded, "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse at 13% 18%, #ffe3e7 0 2px, transparent 3px),
+        radial-gradient(ellipse at 84% 15%, #ffe6b5 0 3px, transparent 4px),
+        radial-gradient(ellipse at 77% 80%, #e7dcff 0 3px, transparent 4px),
+        radial-gradient(ellipse at 14% 82%, #fff0c9 0 3px, transparent 4px),
+        linear-gradient(145deg, #fff9f2, #fff4f5 55%, #f5f0ff);
+    }
+    .page {
+      position: relative;
+      display: grid;
+      min-height: 100svh;
+      place-items: center;
+      padding: 48px 24px 90px;
+      isolation: isolate;
+    }
+    .glow {
+      position: absolute;
+      z-index: -1;
+      width: min(74vw, 710px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.92), rgba(255,255,255,.53) 50%, transparent 71%);
+    }
+    .card {
+      width: min(100%, 680px);
+      padding: clamp(32px, 7vw, 68px) clamp(24px, 7vw, 72px) 54px;
+      border: 1px solid rgba(255,255,255,.95);
+      border-radius: 32px;
+      background: var(--card);
+      box-shadow: 0 22px 75px rgba(112, 79, 112, .10), inset 0 1px rgba(255,255,255,.9);
+      text-align: center;
+      backdrop-filter: blur(9px);
+      animation: arrive .8s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 19px;
+      padding: 8px 14px;
+      border: 1px solid #f3dce8;
+      border-radius: 999px;
+      background: #fff8fc;
+      color: #98516f;
+      font-size: .75rem;
+      font-weight: 750;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: "✦"; color: #e4aa56; font-size: 1rem; }
+    h1 {
+      margin: 0;
+      color: #392b50;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 10vw, 5.2rem);
+      font-weight: 700;
+      letter-spacing: -.065em;
+      line-height: .98;
+    }
+    h1 span { display: block; color: var(--berry); font-style: italic; }
+    .divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 28px 0 23px; color: #e2ad65; }
+    .divider::before, .divider::after { width: 42px; height: 1px; background: #efd8bd; content: ""; }
+    .message {
+      max-width: 470px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 2.6vw, 1.2rem);
+      line-height: 1.8;
+    }
+    .message strong { color: #58446f; font-weight: 700; }
+    .signoff { margin: 28px 0 0; color: #a57d8d; font-family: Georgia, serif; font-size: 1.12rem; font-style: italic; }
+    .sparkle { position: absolute; z-index: -1; color: #e1af63; opacity: .82; animation: float 4s ease-in-out infinite; }
+    .sparkle.one { top: 14%; left: 17%; font-size: 27px; }
+    .sparkle.two { top: 23%; right: 16%; color: #bd8cb2; font-size: 18px; animation-delay: -1.3s; }
+    .sparkle.three { bottom: 19%; left: 22%; color: #c692ad; font-size: 20px; animation-delay: -2s; }
+    .sparkle.four { right: 22%; bottom: 15%; font-size: 29px; animation-delay: -.7s; }
+    .cat-button {
+      position: fixed;
+      z-index: 2;
+      right: clamp(14px, 4vw, 42px);
+      bottom: clamp(10px, 3vh, 28px);
+      display: grid;
+      justify-items: center;
+      gap: 2px;
+      width: 126px;
+      padding: 4px 8px 2px;
+      border: 0;
+      border-radius: 20px;
+      background: transparent;
+      color: #654b73;
+      font: inherit;
+      cursor: pointer;
+      transition: transform .2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cat-button:hover { transform: translateY(-5px) rotate(-2deg); }
+    .cat-button:focus-visible, .again:focus-visible { outline: 3px solid #8065bf; outline-offset: 5px; }
+    .cat-button svg { width: 90px; height: 91px; overflow: visible; filter: drop-shadow(0 7px 5px rgba(92,61,93,.13)); }
+    .cat-button .label { padding: 5px 11px; border: 1px solid #f0d9e5; border-radius: 20px; background: #fffafc; font-size: .78rem; font-weight: 800; letter-spacing: .03em; }
+    .cat-button .label::after { content: "!"; color: var(--berry); }
+    .cat-button .paw { transform-box: fill-box; transform-origin: 72% 77%; animation: wave 2.1s ease-in-out infinite; }
+    .cat-button:active { transform: scale(.95); }
+    .fireworks {
+      position: fixed;
+      z-index: 5;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 24px;
+      background: radial-gradient(ellipse at 50% 40%, #282041 0, #17152a 45%, #0c1021 100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .35s ease, visibility .35s;
+    }
+    .fireworks.open { opacity: 1; visibility: visible; }
+    #sky { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .celebration-copy { position: relative; z-index: 1; width: min(560px, 92vw); text-align: center; pointer-events: none; }
+    .celebration-copy p { margin: 0 0 12px; color: #f8d49d; font-size: .77rem; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; }
+    .celebration-copy h2 { margin: 0; color: white; font-family: Georgia, serif; font-size: clamp(3rem, 11vw, 6rem); letter-spacing: -.06em; line-height: .95; text-shadow: 0 4px 40px rgba(255,191,119,.38); }
+    .celebration-copy .wish { max-width: 430px; margin: 20px auto 25px; color: #e6dff6; font-size: clamp(1rem, 3vw, 1.2rem); line-height: 1.65; }
+    .again { pointer-events: auto; min-height: 48px; padding: 12px 21px; border: 1px solid rgba(255,255,255,.34); border-radius: 999px; background: rgba(255,255,255,.13); color: #fff; font: inherit; font-size: .92rem; font-weight: 750; cursor: pointer; backdrop-filter: blur(7px); transition: background .18s ease, transform .18s ease; }
+    .again:hover { transform: translateY(-2px); background: rgba(255,255,255,.22); }
+    .close-hint { position: absolute; right: 21px; top: 18px; z-index: 2; color: #c9c1df; font-size: .76rem; }
+    @keyframes arrive { from { opacity: 0; transform: translateY(14px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-10px) rotate(12deg); } }
+    @keyframes wave { 0%,50%,100% { transform: rotate(0); } 14%,32% { transform: rotate(14deg); } 23% { transform: rotate(-8deg); } }
+    @media (max-width: 520px) {
+      .page { padding: 28px 16px 146px; }
+      .card { border-radius: 25px; padding-top: 39px; padding-bottom: 37px; }
+      .sparkle.one { left: 7%; top: 9%; }
+      .sparkle.two { right: 6%; top: 13%; }
+      .sparkle.three { left: 7%; bottom: 17%; }
+      .sparkle.four { right: 9%; bottom: 21%; }
+      .cat-button { right: 50%; bottom: 7px; transform: translateX(50%); width: auto; grid-template-columns: 70px auto; align-items: center; gap: 8px; padding: 0 14px 0 6px; }
+      .cat-button:hover { transform: translateX(50%) translateY(-3px); }
+      .cat-button svg { width: 68px; height: 68px; }
+      .cat-button .label { font-size: .82rem; }
+      .cat-button:active { transform: translateX(50%) scale(.97); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="glow" aria-hidden="true"></div>
+    <span class="sparkle one" aria-hidden="true">✧</span>
+    <span class="sparkle two" aria-hidden="true">✦</span>
+    <span class="sparkle three" aria-hidden="true">✧</span>
+    <span class="sparkle four" aria-hidden="true">✦</span>
+    <article class="card">
+      <p class="eyebrow">A very well-earned moment</p>
+      <h1>You did it,<span>Valerie!</span></h1>
+      <div class="divider" aria-hidden="true">✦</div>
+      <p class="message">Your <strong>last presentation</strong> is officially finished! I hope everything goes brilliantly for you for the rest of this week <em>and</em> for all the wonderful things still to come.</p>
+      <p class="signoff">You deserve to celebrate. ♡</p>
+    </article>
+  </main>
+
+  <button class="cat-button" id="celebrate" type="button" aria-label="Press the cat for a huge fireworks celebration">
+    <svg viewBox="0 0 100 100" role="img" aria-label="A waving little cat">
+      <path d="M18 46 Q13 30 28 37 Q39 23 52 34 Q69 24 78 39 Q93 38 85 55 Q91 68 78 75 Q70 90 49 87 Q29 90 21 75 Q8 65 18 46Z" fill="#f2b68e" stroke="#684c67" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M19 45 Q14 33 29 39 L37 47 M63 47 L77 39 Q89 37 84 52" fill="#ffe1c9" stroke="#684c67" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M20 74 Q7 79 13 88 Q18 95 29 85" fill="none" stroke="#684c67" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="43" cy="57" rx="2.5" ry="3.7" fill="#47364c"/><ellipse cx="65" cy="57" rx="2.5" ry="3.7" fill="#47364c"/>
+      <path d="M51 63 Q54 61 57 63 Q56 67 54 67 Q52 67 51 63Z" fill="#bd6378"/>
+      <path d="M54 67 Q51 72 47 69 M54 67 Q58 72 62 69" fill="none" stroke="#684c67" stroke-width="1.7" stroke-linecap="round"/>
+      <path d="M39 64 L26 62 M39 68 L27 70 M68 64 L80 61 M68 68 L81 70" stroke="#9b6a69" stroke-width="1.3" stroke-linecap="round"/>
+      <g class="paw"><path d="M72 39 Q74 28 79 24 Q85 25 81 39Z" fill="#f2b68e" stroke="#684c67" stroke-width="2.5"/><path d="M77 29 L80 28" stroke="#ffe8d7" stroke-width="2" stroke-linecap="round"/></g>
+      <path d="M43 43 Q54 37 67 43" fill="none" stroke="#fff0e3" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <span class="label">press me</span>
+  </button>
+
+  <section class="fireworks" id="fireworks" role="dialog" aria-modal="true" aria-labelledby="big-title" aria-hidden="true">
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <span class="close-hint">Press Escape to close</span>
+    <div class="celebration-copy">
+      <p>For Valerie, with a whole lot of love</p>
+      <h2 id="big-title">The sky<br>is yours!</h2>
+      <p class="wish">One last presentation, a million possibilities. Here’s to everything wonderful still ahead. ✨</p>
+      <button class="again" id="again" type="button">One more burst ✨</button>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const overlay = document.getElementById('fireworks');
+      const canvas = document.getElementById('sky');
+      const ctx = canvas.getContext('2d');
+      const trigger = document.getElementById('celebrate');
+      const again = document.getElementById('again');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let width = 0, height = 0, dpr = 1, particles = [], rockets = [], raf = 0, launchTimer = 0, running = false, lastLaunch = 0;
+      const colors = ['#ffcf6e', '#ff739a', '#9fe7ff', '#d0a3ff', '#a6f2bc', '#ffffff', '#ff9e70'];
+      const resize = () => {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth; height = window.innerHeight;
+        canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
+        canvas.style.width = width + 'px'; canvas.style.height = height + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      };
+      const burst = (x, y, size = 1) => {
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const count = Math.round((65 + Math.random() * 55) * size);
+        for (let i = 0; i < count; i++) {
+          const angle = Math.PI * 2 * i / count + (Math.random() - .5) * .11;
+          const speed = (1.3 + Math.random() * 5.4) * size;
+          particles.push({ x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, drag: .984 + Math.random() * .01, gravity: .035 + Math.random() * .055, life: 65 + Math.random() * 56, age: 0, size: 1.3 + Math.random() * 2.3, color, sparkle: Math.random() > .72 });
+        }
+        if (size > 1.2) {
+          for (let i = 0; i < 22; i++) {
+            const a = Math.random() * Math.PI * 2, s = 2 + Math.random() * 6;
+            particles.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, drag: .978, gravity: .07, life: 75, age: 0, size: 1.5 + Math.random() * 2, color: '#fff4d2', sparkle: true });
+          }
+        }
+      };
+      const launch = (x = width * (.13 + Math.random() * .74), y = height * (.13 + Math.random() * .42), size = 1) => {
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        rockets.push({ x: x + (Math.random() - .5) * 65, y: height + 15, tx: x, ty: y, color, size, speed: 7 + Math.random() * 3, trail: [] });
+      };
+      const frame = (now) => {
+        if (!running) return;
+        ctx.globalCompositeOperation = 'destination-out'; ctx.fillStyle = 'rgba(11, 14, 31, .22)'; ctx.fillRect(0, 0, width, height);
+        ctx.globalCompositeOperation = 'lighter';
+        for (let i = rockets.length - 1; i >= 0; i--) {
+          const r = rockets[i], dx = r.tx - r.x, dy = r.ty - r.y, dist = Math.hypot(dx, dy);
+          r.trail.push({ x: r.x, y: r.y }); if (r.trail.length > 8) r.trail.shift();
+          for (let j = 0; j < r.trail.length; j++) { const t = j / r.trail.length; ctx.globalAlpha = t * .65; ctx.fillStyle = r.color; ctx.beginPath(); ctx.arc(r.trail[j].x, r.trail[j].y, 1 + t * 2, 0, Math.PI * 2); ctx.fill(); }
+          ctx.globalAlpha = 1; ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(r.x, r.y, 3, 0, Math.PI * 2); ctx.fill();
+          if (dist < 11) { burst(r.tx, r.ty, r.size); rockets.splice(i, 1); }
+          else { r.x += dx / dist * r.speed; r.y += dy / dist * r.speed; }
+        }
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i]; p.age++; p.vx *= p.drag; p.vy = p.vy * p.drag + p.gravity; p.x += p.vx; p.y += p.vy;
+          if (p.age >= p.life) { particles.splice(i, 1); continue; }
+          const fade = Math.min(1, (p.life - p.age) / 15, p.age / 3);
+          ctx.globalAlpha = Math.max(0, fade) * (p.sparkle && p.age % 7 < 3 ? .42 : 1);
+          ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+          if (p.size > 2 && p.sparkle) { ctx.strokeStyle = p.color; ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(p.x - 4, p.y); ctx.lineTo(p.x + 4, p.y); ctx.moveTo(p.x, p.y - 4); ctx.lineTo(p.x, p.y + 4); ctx.stroke(); }
+        }
+        ctx.globalAlpha = 1;
+        if (now - lastLaunch > (reduceMotion ? 2200 : 600)) { launch(width * (.1 + Math.random() * .8), height * (.1 + Math.random() * .48), Math.random() > .5 ? 1.05 : .85); lastLaunch = now; }
+        raf = requestAnimationFrame(frame);
+      };
+      const start = () => {
+        if (running) return;
+        resize(); running = true; particles = []; rockets = [];
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < 9; i++) setTimeout(() => launch(width * (.08 + Math.random() * .84), height * (.12 + Math.random() * .47), 1.3 + Math.random() * .6), i * 145);
+        launchTimer = setInterval(() => {
+          if (running && rockets.length < 8) launch(width * (.08 + Math.random() * .84), height * (.1 + Math.random() * .5), 1 + Math.random() * .65);
+        }, reduceMotion ? 1700 : 420);
+        lastLaunch = performance.now(); raf = requestAnimationFrame(frame);
+      };
+      const stop = () => {
+        running = false; clearInterval(launchTimer); cancelAnimationFrame(raf);
+        ctx.clearRect(0, 0, width, height); particles = []; rockets = [];
+      };
+      const open = () => {
+        overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; start(); again.focus();
+      };
+      const close = () => {
+        overlay.classList.remove('open'); overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = ''; stop(); trigger.focus();
+      };
+      trigger.addEventListener('click', open);
+      again.addEventListener('click', () => { stop(); start(); });
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('open')) close(); });
+      window.addEventListener('resize', () => { if (running) resize(); });
+    })();
+  </script>
+</body>
+</html>
+
